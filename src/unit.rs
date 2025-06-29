@@ -75,6 +75,7 @@ async fn concurrent_actions() {
     let res2 = file_system.read("/some2.txt", 0, 5).await.unwrap();
     let res1 = file_system.read("/some1.txt", 0, 5).await.unwrap();
     let res3 = file_system.read("/some3.txt", 0, 5).await.unwrap();
+    file_system.write("/some2.txt", 2, b"nne").await.unwrap();
     assert_eq!(res2, b"sonne");
     assert_eq!(res1, b"some1");
     assert_eq!(res3, b"some3");
